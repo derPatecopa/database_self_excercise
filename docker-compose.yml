@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - '5455:5432'
+    env_file:
+      - .env
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+
+volumes:
+  postgres:
+
+# version: '3.8'
+# services:
+#   db:
+#     image: postgres:14.1-alpine
+#     restart: always
+#     environment:
+#       - POSTGRES_USER=derPatecopa
+#       - POSTGRES_PASSWORD=test
+#       - POSTGRES_HOST=localhost
+#       - POSTGRES_DB=udacity_database
+#     ports:
+#       - '5455:5432'
+#     volumes: 
+#       - db:/var/lib/postgresql/data
+# volumes:
+#   db:
+#     driver: local
