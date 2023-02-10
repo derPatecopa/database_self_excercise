@@ -1,5 +1,13 @@
 import Client from "../database";
 
+const defaultBook: Book = {
+  id: 0,
+  title: '',
+  author: '',
+  totalPages: 0,
+  summary: ''
+};
+
 export type Book = {
   id: number;
   title: string;
@@ -10,6 +18,7 @@ export type Book = {
 
 export class BookStore {
   async index(): Promise<Book[]> {
+    if (Client){
     try {
       const conn = await Client.connect();
       const sql = "SELECT * FROM books";
@@ -22,10 +31,16 @@ export class BookStore {
     } catch (err) {
       throw new Error(`Could not get books. Error: ${err}`);
     }
+    }
+    else{
+    console.log("Client is falsy")
+    return [];
+    }
   }
 
   //return value not an array since we want a single entry to display
   async show(id: string): Promise<Book> {
+    if(Client) {
     try {
       //$1 is a placeholder for the value provided from show
       const sql = "SELECT * FROM books WHERE id=($1)";
@@ -40,9 +55,14 @@ export class BookStore {
     } catch (err) {
       throw new Error(`Could not find book ${id}. Error: ${err}`);
     }
+  } else {
+    console.log("Client is falsy");
+    return defaultBook;
+  }
   }
   //can use the book type for create instead of typing out all the single values
   async create(b: Book): Promise<Book> {
+    if (Client) {
     try {
       //same procedure here: $1... is placeholder for the incoming values
       const sql =
@@ -65,9 +85,14 @@ export class BookStore {
     } catch (err) {
       throw new Error(`Could not add new book ${b.title}. Error: ${err}`);
     }
+  } else {
+    console.log("Client is falsy");
+    return defaultBook;
+  }
   }
 
   async delete(id: string): Promise<Book> {
+    if (Client) {
     try {
       const sql = "DELETE FROM books WHERE id=($1)";
 
@@ -83,5 +108,9 @@ export class BookStore {
     } catch (err) {
       throw new Error(`Could not delete book ${id}. Error: ${err}`);
     }
+  } else {
+    console.log("Client is falsy");
+    return defaultBook;
+  }
   }
 }
