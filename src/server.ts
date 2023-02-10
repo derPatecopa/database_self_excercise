@@ -16,7 +16,7 @@
 
 //implemented my own logic for server with nodemon and a little routing to /database
 
-import express, {Application} from "express";
+import express, { Application } from "express";
 import mainroutes from "./routes/mainroutes";
 const app: Application = express();
 const port = 3000;

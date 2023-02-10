@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "build": "npx tsc",
-    "prettier": "npx prettier --write dist/",
+    "prettier": "npx prettier --write src/",
     "lint": "eslint . --ext .ts"
   },
   "author": "Udacity",
