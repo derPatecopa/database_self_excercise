@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "migrate": "db-migrate --env dev up && db-migrate up",
     "jasmine": "jasmine",
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ENV=test && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
     "tsc": "tsc",
     "build": "npx tsc",
     "prettier": "npx prettier --write src/",
