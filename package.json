@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "jasmine": "jasmine",
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,6 +24,7 @@
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.3",
     "express": "^4.17.1",
+    "jasmine-spec-reporter": "^7.0.0",
     "pg": "^8.9.0",
     "ts-node": "^10.9.1",
     "tsc": "^2.0.4",
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",
+    "@types/jasmine": "^4.3.1",
     "@types/nodemon": "^1.19.2",
     "@types/prettier": "^2.7.2",
     "@types/tsc-watch": "^4.2.0",

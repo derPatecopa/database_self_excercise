@@ -8,9 +8,9 @@
     },
     "test": {
       "driver": "pg",
-      "host": "localhost",
-      "database": "udacity_database_test",
-      "user": "derPatecopa_test",
-      "password": "752381test"
+      "host": {"ENV": "POSTGRES_HOST"},
+      "database": {"ENV": "POSTGRES_TEST_DB"},
+      "user": {"ENV": "POSTGRES_USER"},
+      "password": {"ENV": "POSTGRES_PASSWORD"}
     }
   }
