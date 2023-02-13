@@ -4,7 +4,7 @@ const defaultBook: Book = {
   id: 0,
   title: "",
   author: "",
-  totalPages: 0,
+  totalpages: 0,
   summary: "",
 };
 
@@ -12,7 +12,7 @@ export type Book = {
   id?: number;
   title: string;
   author: string;
-  totalPages: number;
+  totalpages: number;
   summary: string;
 };
 
@@ -65,14 +65,14 @@ export class BookStore {
       try {
         //same procedure here: $1... is placeholder for the incoming values
         const sql =
-          "INSERT INTO books (title, author, total_pages, summary) VALUES($1, $2, $3, $4) RETURNING *";
+          "INSERT INTO books (title, author, totalPages, summary) VALUES($1, $2, $3, $4) RETURNING *";
 
         const conn = await Client.connect();
         //and they are being passed here as an array in the query method
         const result = await conn.query(sql, [
           b.title,
           b.author,
-          b.totalPages,
+          b.totalpages,
           b.summary,
         ]);
         //return a specific row

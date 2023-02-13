@@ -22,14 +22,14 @@ describe("Book Model", () => {
   it("create method should add a book", async () => {
     const result = await store.create({
       title: "The Stand",
-      totalPages: 1000,
+      totalpages: 1000,
       author: "Stephen King",
       summary: "It is a very intense book",
     });
     expect(result).toEqual({
       id: 1,
       title: "The Stand",
-      totalPages: 1000,
+      totalpages: 1000,
       author: "Stephen King",
       summary: "It is a very intense book",
     });

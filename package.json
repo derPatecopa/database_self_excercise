@@ -11,7 +11,7 @@
     "jasmine": "jasmine",
     "start": "nodemon src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess 'node ./dist/server.js'",
-    "test": "export ENV=test npx tsc && npx tsc && db-migrate --env test up && jasmine && db-migrate db:drop test",
+    "test": "export ENV=test npx tsc && npx tsc && db-migrate db:create udacity_test_database && db-migrate --env test up && jasmine && db-migrate db:drop udacity_test_database",
     "tsc": "tsc",
     "build": "npx tsc",
     "prettier": "npx prettier --write src/",
