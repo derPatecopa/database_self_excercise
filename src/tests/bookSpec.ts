@@ -19,19 +19,19 @@ describe("Book Model", () => {
     expect(store.delete).toBeDefined();
   });
 
-  // it("create method should add a book", async () => {
-  //   const result = await store.create({
-  //     title: "The Stand",
-  //     totalPages: 1000,
-  //     author: "Stephen King",
-  //     summary: "It is a very intense book",
-  //   });
-  //   expect(result).toEqual({
-  //     id: 1,
-  //     title: "The Stand",
-  //     totalPages: 1000,
-  //     author: "Stephen King",
-  //     summary: "It is a very intense book",
-  //   });
-  // });
+  it("create method should add a book", async () => {
+    const result = await store.create({
+      title: "The Stand",
+      totalPages: 1000,
+      author: "Stephen King",
+      summary: "It is a very intense book",
+    });
+    expect(result).toEqual({
+      id: 1,
+      title: "The Stand",
+      totalPages: 1000,
+      author: "Stephen King",
+      summary: "It is a very intense book",
+    });
+  });
 });
