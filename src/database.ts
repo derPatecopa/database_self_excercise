@@ -13,9 +13,10 @@ const {
 } = process.env;
 
 let client: Pool | null = null;
-console.log(ENV);
+console.log("This is the ENV variable: " + ENV);
 
 if (ENV === "dev") {
+  console.log("Connection regular database")
   client = new Pool({
     host: POSTGRES_HOST,
     database: POSTGRES_DB,
@@ -24,6 +25,7 @@ if (ENV === "dev") {
   });
 }
 if (ENV === "test") {
+  console.log("Connection test database")
   client = new Pool({
     host: POSTGRES_HOST,
     database: POSTGRES_TEST_DB,

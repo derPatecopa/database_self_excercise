@@ -9,7 +9,7 @@ const defaultBook: Book = {
 };
 
 export type Book = {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   totalPages: number;
