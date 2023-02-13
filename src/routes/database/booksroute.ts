@@ -1,9 +1,10 @@
 import express from 'express';
 import {Book} from '../../models/book'
+import indexhandler from "../../handlers/bookhandler";
 
 const routes = express.Router();
 //_ syntax means, that req is never being used, marks it as "throw away" argument, since it can not be ignored in this case
-routes.get("/", async (_req: express.Request, res: express.Response)=> {
+routes.get("/", indexhandler, async (_req: express.Request, res: express.Response, next: express.NextFunction)=> {
     res.send("This is the index route");
 })
 
