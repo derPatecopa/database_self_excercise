@@ -26,6 +26,7 @@ describe("Book Model", () => {
       author: "Stephen King",
       summary: "It is a very intense book",
     });
+    //postgres saves descriptions for tables by default in all lowercase, so variables need to be written in lowercase or changed in the model file
     expect(result).toEqual({
       id: 1,
       title: "The Stand",

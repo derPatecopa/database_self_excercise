@@ -18,11 +18,23 @@
 
 import express, { Application } from "express";
 import mainroutes from "./routes/mainroutes";
+import cors from "cors";
+import bodyParser from "body-parser";
+
 const app: Application = express();
 const port = 3000;
 
+//adding cors
+const corsOptions = {
+  origin: "http://someotherdomain.com",
+  optionsSuccessStatus: 200, //legacy browsers
+};
+
 //using app with routes
 app.use("/database", mainroutes);
+
+app.use(cors(corsOptions));
+app.use(bodyParser.json);
 
 // start the Express server
 app.listen(port, () => {
