@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "log": "npm run build && node dist/models/book.js",
     "migrate": "db-migrate up --config database.json -e dev",
     "migrate-down": "db-migrate down --config database.json -e test && db-migrate down --config database.json -e dev",
     "migrate-test": "db-migrate up --config database.json -e test",
@@ -23,6 +24,7 @@
     "@types/body-parser": "^1.19.2",
     "@types/express": "^4.17.9",
     "@types/pg": "^8.6.6",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.19.0",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
