@@ -1,5 +1,6 @@
 import express from "express";
 import { Book, BookStore } from "../models/book";
+import jwt, { Secret } from "jsonwebtoken";
 
 const store = new BookStore();
 
@@ -38,6 +39,17 @@ export const create = async (
   res: express.Response,
   next: express.NextFunction
 ) => {
+  //auhtorization for creating a book, only for logged in users
+  try {
+    const authorizationHeader = req.headers.authorization;
+    const token = authorizationHeader?.split(" ")[1] as string;
+    jwt.verify(token, process.env.TOKEN_SECRET as Secret);
+  } catch (err) {
+    res.status(401);
+    res.json("Access denied, invalid token");
+    //returns because authentication failed
+    return;
+  }
   try {
     const book: Book = {
       //.body contains the parsed request body sent by the client, in this case a JSON book object
@@ -81,6 +93,15 @@ export const destroy = async (
   res: express.Response,
   next: express.NextFunction
 ) => {
+  try {
+    const authorizationHeader = req.headers.authorization;
+    const token = authorizationHeader?.split(" ")[1] as string;
+    jwt.verify(token, process.env.TOKEN_SECRET as Secret);
+  } catch (err) {
+    res.status(401);
+    res.json("Access denied, invalid token");
+    return;
+  }
   try {
     const deleted = await store.delete(req.body.id);
     res.json(deleted);
