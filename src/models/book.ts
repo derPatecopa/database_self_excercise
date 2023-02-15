@@ -26,7 +26,9 @@ export class BookStore {
         const result = await conn.query(sql);
 
         conn.release();
-
+        //refers to the array of rows returned from the query to the books table
+        //Array of Rows (Promise<Book[]>) is returned
+        //result.rows access this
         return result.rows;
       } catch (err) {
         throw new Error(`Could not get books. Error: ${err}`);
@@ -113,4 +115,3 @@ export class BookStore {
     }
   }
 }
-
