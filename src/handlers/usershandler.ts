@@ -36,7 +36,7 @@ export const show = async (
 
 export const create = async (req: express.Request, res: express.Response) => {
   const user: User = {
-    user_name: req.body.username,
+    user_name: (req.body.user_name) as string,
     user_password: req.body.user_password,
   };
   try {

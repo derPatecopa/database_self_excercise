@@ -66,7 +66,7 @@ export class UserStore {
       try {
         const conn = await Client.connect();
         const sql =
-          "INSERT INTO users (username, password_digest) VALUES($1, $2) RETURNING *";
+          "INSERT INTO users (user_name, user_password) VALUES($1, $2) RETURNING *";
 
         const hash = bcrypt.hashSync(
           u.user_password + pepper,
