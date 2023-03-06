@@ -10,7 +10,7 @@ dotenv.config();
 // } else console.log("Working fine");
 
 const saltRounds = process.env.SALT_ROUNDS as string;
-const pepper = process.env.BYCRYPT_PASSWORD;
+const pepper = process.env.BCRYPT_PASSWORD;
 
 //console.log(`This is salt and pepper: ${typeof saltRounds}, ${typeof pepper}`);
 
